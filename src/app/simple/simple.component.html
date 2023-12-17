@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="container-left">
+    <div class="preview">Left</div>
+  </div>
+  <div class="container-right">
+    <div class="controls">
+      @for (draggable of draggables; track $index) {
+      <button class="control" [dndDraggable]="draggable.content">
+        {{ draggable.content }}
+      </button>
+      }
+    </div>
+  </div>
+</div>
+
+<!-- <div class="container-fluid">
+  <div class="flex w-screen h-screen">
+    <div class="w-1/4">
+      @for (draggable of draggables; track $index) {
+      <mat-card appearance="raised" [dndDraggable]="draggable.content">
+        <mat-card-content class="d-flex flex-column gap-2">
+          {{ draggable.content }}
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <div class="w-3/4">
+      <mat-card appearance="raised">
+        <mat-card-content>
+          @for (container of containers(); track $index) {
+          <div class="flex">
+            @for (slice of container.slices; track $index) {
+            <section
+              [ngStyle]="getSliceWidthClass(container.slices.length)"
+              (dndDrop)="onDrop($event, container.id, slice.id)"
+              class="my-dropzone mt-3 p-2 border rounded"
+              dndDragoverClass="custom-drag-over"
+              dndDropzone
+            >
+              @switch (slice.element) { @case ('input') {
+              <input type="text" />
+              } @case ('textarea') {
+              <textarea name="" id="" cols="10" rows="10"></textarea>
+              } @case ('dropdown') {
+              <select>
+                <option value="1">One</option>
+              </select>
+              } @default {
+              <span class="opacity-30">drop element</span>
+              } }
+            </section>
+            }
+          </div>
+          }
+          <section
+            (dndDrop)="onDropContainer($event)"
+            class="mt-3 p-2 border rounded bg-slate-200"
+            dndDragoverClass="custom-drag-over"
+            dndDropzone
+          >
+            <p class="text-center opacity-40">Drop your container here</p>
+          </section>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div> -->
