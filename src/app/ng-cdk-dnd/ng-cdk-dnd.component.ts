@@ -41,4 +41,16 @@ export class NgCdkDndComponent {
   exited(e: CdkDragExit<string[]>) {
     this.transferringItem = e.item.data;
   }
+
+  onDragStart() {
+    document
+      .querySelector('[contenteditable="true"]')
+      ?.setAttribute('contenteditable', 'false');
+  }
+
+  onDragEnd() {
+    document
+      .querySelector('[contenteditable="false"]')
+      ?.setAttribute('contenteditable', 'true');
+  }
 }
