@@ -1,0 +1,36 @@
+<div class="example-container">
+  <h2>Controls</h2>
+
+  <div
+    cdkDropList
+    #doneList="cdkDropList"
+    [cdkDropListData]="done"
+    class="example-list rec"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of done" cdkDrag>{{ item }}</div>
+  </div>
+</div>
+
+<div class="example-container">
+  <h2>Control options</h2>
+
+  <div
+    cdkDropList
+    [cdkDropListData]="todo"
+    [cdkDropListConnectedTo]="[doneList]"
+    [cdkDropListSortingDisabled]="true"
+    class="example-list"
+    (cdkDropListEntered)="entered($event)"
+    (cdkDropListExited)="exited($event)"
+  >
+    <ng-container *ngFor="let item of todo">
+      <div class="example-box" cdkDrag [cdkDragData]="item">
+        {{ item }}
+      </div>
+      <div class="example-box" *ngIf="transferringItem === item">
+        {{ item }}
+      </div>
+    </ng-container>
+  </div>
+</div>
